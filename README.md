@@ -2,6 +2,18 @@
 
 A simple and elegant weather app built with Flutter. It provides real-time weather data, hourly forecasts, and additional information for any city.
 
+## 🛠️ Built With
+
+<div align="center">
+
+![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
+![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
+![OpenWeatherAPI](https://img.shields.io/badge/OpenWeather-EB6E4B?style=for-the-badge&logo=openweathermap&logoColor=white)
+
+</div>
+
+---
+
 ## Demo
 
 ![App Demo](demo.gif)
@@ -15,15 +27,7 @@ A simple and elegant weather app built with Flutter. It provides real-time weath
 - **Hourly Forecast:** See a 5-hour forecast with temperature and weather conditions.
 - **Additional Details:** Get extra info on humidity, wind speed, and precipitation.
 - **Dynamic Icons:** Icons change based on the weather conditions (e.g., sunny, clouds, rain, snow).
-- **Pull-to-Refresh:** Easily refresh the weather data with a simple gesture.
 
----
-
-## 🛠️ Built With
-
-![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
-![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
-![OpenWeather](https://img.shields.io/badge/OpenWeather-EB6E4B?style=for-the-badge&logo=openweathermap&logoColor=white)
 
 ---
 
