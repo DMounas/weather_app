@@ -19,15 +19,11 @@ A simple and elegant weather app built with Flutter. It provides real-time weath
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Built With
 
-- **Framework:** Flutter
-- **Language:** Dart
-- **API:** [OpenWeatherMap API](https://openweathermap.org/api)
-- **Packages:**
-  - `http`: For making API requests.
-  - `intl`: For date and time formatting.
-  - `geolocator` / `geocoding` (Optional: if you added this feature)
+![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
+![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
+![OpenWeather](https://img.shields.io/badge/OpenWeather-EB6E4B?style=for-the-badge&logo=openweathermap&logoColor=white)
 
 ---
 
