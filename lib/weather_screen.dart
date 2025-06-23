@@ -1,5 +1,3 @@
-// weather_screen.dart
-
 import 'dart:convert';
 import 'dart:ui';
 import 'package:intl/intl.dart';
@@ -27,7 +25,7 @@ IconData getWeatherIcon(String weatherCondition) {
     case 'fog':
       return Icons.foggy;
     default:
-      return Icons.wb_sunny; // A sensible default
+      return Icons.wb_sunny; 
   }
 }
 
@@ -41,16 +39,15 @@ class WeatherScreen extends StatefulWidget {
 class _WeatherScreenState extends State<WeatherScreen> {
   late Future<Map<String, dynamic>> weather;
 
-  // --- CHANGE #1: Add state for city name and a controller for the TextField ---
+
   final TextEditingController _cityController = TextEditingController();
   String _cityName = 'Guwahati'; // Default city
 
-  // --- CHANGE #2: Modify the function to accept city and fetch in Celsius ---
   Future<Map<String, dynamic>> getCurrentWeather(String cityName) async {
     try {
       final res = await http.get(
         Uri.parse(
-          // Added "&units=metric" to get temperature in Celsius
+
           "https://api.openweathermap.org/data/2.5/forecast?q=$cityName&APPID=$openWeatherAPIKey&units=metric",
         ),
       );
@@ -58,7 +55,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
       final data = json.decode(res.body);
 
       if (data['cod'] != '200') {
-        // Use the error message from the API if available
+
         throw data['message'] ?? 'An unexpected error occurred';
       }
 
@@ -80,7 +77,6 @@ class _WeatherScreenState extends State<WeatherScreen> {
     weather = getCurrentWeather(_cityName);
   }
 
-  // --- CHANGE #3: Add a dialog to get user input ---
   void _showCitySearchDialog() {
     showDialog(
       context: context,
@@ -126,20 +122,20 @@ class _WeatherScreenState extends State<WeatherScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // The title is now removed to make space for the location name below
+
         title: const Text(
           'Weather App',
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
         actions: [
-          // --- CHANGE #4: Add a search button ---
+
           IconButton(
             onPressed: _showCitySearchDialog,
             icon: const Icon(Icons.search),
           ),
           IconButton(
-            onPressed: _fetchWeather, // Refresh button now uses the helper
+            onPressed: _fetchWeather, 
             icon: const Icon(Icons.refresh_rounded),
           ),
         ],
@@ -154,13 +150,12 @@ class _WeatherScreenState extends State<WeatherScreen> {
           }
 
           final data = snapshot.data!;
-          // --- CHANGE #5: Extract the location name ---
+
           final currentCityName = data['city']['name'];
           final currentTemp = data['list'][0]['main']['temp'];
           final currentSky = data['list'][0]['weather'][0]['main'];
           final currentHumidity = data['list'][0]['main']['humidity'];
           final currentWindSpeed = data['list'][0]['wind']['speed'];
-          // OpenWeatherMap might not always provide rain data, so we handle null safely
           final currentPrecipitation = data['list'][0]['rain']?['3h'] ?? 0;
 
           return SingleChildScrollView(
@@ -185,7 +180,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                             padding: const EdgeInsets.all(16.0),
                             child: Column(
                               children: [
-                                // --- CHANGE #6: Display location and temperature in Celsius ---
+                               
                                 Text(
                                   currentCityName,
                                   style: const TextStyle(
@@ -195,7 +190,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                 ),
                                 const SizedBox(height: 10),
                                 Text(
-                                  '${currentTemp.round()}°C', // Rounded and with Celsius symbol
+                                  '${currentTemp.round()}°C', 
                                   style: const TextStyle(
                                     fontSize: 32,
                                     fontWeight: FontWeight.bold,
@@ -233,7 +228,6 @@ class _WeatherScreenState extends State<WeatherScreen> {
                       itemBuilder: (context, index) {
                         final hourlyForecast = data['list'][index + 1];
                         final hourlySky = hourlyForecast['weather'][0]['main'];
-                        // --- CHANGE #7: Pass rounded temperature ---
                        final IconData hourlyIcon = getWeatherIcon(hourlySky);
                         final hourlyTemp =
                             hourlyForecast['main']['temp'].round().toString();
@@ -241,7 +235,6 @@ class _WeatherScreenState extends State<WeatherScreen> {
                         return HourlyForecastItem(
         time: DateFormat.jm().format(time),
         temperature: hourlyTemp,
-        // Pass the dynamic icon to the item
         weatherIcon: hourlyIcon,
       );
     },

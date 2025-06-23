@@ -1,5 +1,3 @@
-// hourly_forecast_item.dart
-
 import "package:flutter/material.dart";
 
 class HourlyForecastItem extends StatelessWidget {
@@ -32,7 +30,6 @@ class HourlyForecastItem extends StatelessWidget {
             const SizedBox(height: 8),
             Icon(weatherIcon, size: 32),
             const SizedBox(height: 8),
-            // --- CHANGE: Added Celsius symbol ---
             Text('$temperature°C'),
           ],
         ),
