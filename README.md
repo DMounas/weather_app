@@ -16,7 +16,9 @@ A simple and elegant weather app built with Flutter. It provides real-time weath
 
 ## Demo
 
-![App Demo](demo.gif)
+<p align="center">
+  <img src="weather_app.gif" width="400" alt="Weather App Demo">
+</p>
 
 ---
 
